@@ -92,11 +92,11 @@ def terabox_download():
     url = request.args.get('url')
     if not url:
         return jsonify({'error': 'URL parameter is required'}), 400
-    if not path.isfile('plugins/helper/cookies.txt'):
+    if not path.isfile('/cookies.txt'):
         return jsonify({'error': 'cookies.txt not found'}), 500
 
     try:
-        jar = MozillaCookieJar('plugins/helper/cookies.txt')
+        jar = MozillaCookieJar('/cookies.txt')
         jar.load()
         cookies = {}
         for cookie in jar:
